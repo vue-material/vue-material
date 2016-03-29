@@ -1,0 +1,23 @@
+{
+  "name": "vue-material",
+  "version": "1.0.0",
+  "description": "vue-material为遵循MIT协议的开源项目",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-material/vue-material.git"
+  },
+  "keywords": [
+    "vue",
+    "material"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vue-material/vue-material/issues"
+  },
+  "homepage": "https://github.com/vue-material/vue-material#readme"
+}
