@@ -1,6 +1,6 @@
 {
   "name": "vue-material",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "vue-material为遵循MIT协议的开源项目",
   "main": "index.js",
   "scripts": {
