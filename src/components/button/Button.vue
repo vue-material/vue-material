@@ -5,7 +5,7 @@
 <template>
   <button :type="type" @click="onClick" :class="classes.button">
     <span :class="classes.span">
-      <div :class="classes.div" :style="wave" v-for="wave in waveList">
+      <div :class="classes.div" :style="addUnit(wave)" v-for="wave in waveList">
 
       </div>
     </span>
@@ -17,11 +17,11 @@
 </template>
 
 <script type="text/babel">
-  import  jss from 'jss'
+  import  jss from '../../utils/jss'
   let sheet = jss.createStyleSheet({
     button: {
-      width: '100px',
-      height: '30px',
+      width: 100,
+      height: 30,
       border: 'none',
       outline: 'none',
       position: 'relative',
@@ -32,16 +32,17 @@
       position: 'absolute',
       left: 0,
       top: 0,
-      width:'100%',
-      height:'100%',
-      'z-index': -2,
+      width: '100%',
+      height: '100%',
+      zIndex: -2,
+      background: 'gradient(linear, 0% 0%, 0% 100%,from(red), to(#dfdfdf))',
+      transform: 'translateX(100px)'
     },
     div: {
-      'border-radius': '50px',
-      background: 'red',
+      borderRadius: 50,
       position: 'absolute',
-      'z-index': -1,
-      background:'-webkit-gradient(linear, 0% 0%, 0% 100%,from(#cccccc), to(#dfdfdf))'
+      zIndex: -1,
+      background: 'gradient(linear, 0% 0%, 0% 100%,from(red), to(#dfdfdf))'
     },
     span: {
       width: '100%',
@@ -54,12 +55,28 @@
 
       //      left:0,
       //      top:0
+    },
+    test: {
+      width: 10,
     }
   }).attach()
   export default {
     props: {
       type: String,
       size: String,
+    },
+    methods: {
+      addUnit(style){
+        let result = {}
+        for (var key in style) {
+          if (typeof style[key] === 'number') {
+            result[key] = style[key] + 'px'
+          } else {
+            result[key] = style[key]
+          }
+        }
+        return result
+      }
     },
     data(){
       return {
@@ -68,22 +85,22 @@
         waveList: [],
         onClick: (event) => {
           let {waveList}=this
-          console.log(event.target)
           waveList.push({
-            left: event.offsetX + 'px',
-            top: event.offsetY + 'px',
-            width: '2px',
-            height: '2px',
+            left: event.offsetX,
+            top: event.offsetY,
+            width: 2,
+            height: 2,
           })
           let style = waveList[waveList.length - 1]
 
           function loop() {
             requestAnimationFrame(()=> {
-              style.width = parseInt(style.width) + 8 + 'px'
-              style.height = parseInt(style.height) + 8 + 'px'
-              style.left = parseInt(style.left) - 4 + 'px'
-              style.top = parseInt(style.top) - 4 + 'px'
-              if (parseInt(style.width) <= 200) {
+              let {width, height, left, top}=style
+              style.width = width + 8
+              style.height = height + 8
+              style.left = left - 4
+              style.top = top - 4
+              if (style.width <= 200) {
                 loop()
               } else {
                 waveList.shift()

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import mButton from '../../../components/button/Button.vue'
+  import mButton from '../../../src/components/button/Button.vue'
   export default{
     data () {
       return {}
