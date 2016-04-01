@@ -6,7 +6,7 @@
   "scripts": {
     "deploy": "gh-pages -d temp",
     "dev": "node build/dev-server.js && webpack --config build/webpack.dev.conf.js --progress --colors --display-chunks --display-error-details --watch",
-    "build": "node build/build.js ",
+    "build": "node build/build.js && gh-pages -d temp",
     "unit": "karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
@@ -46,6 +46,8 @@
     "isparta-loader": "^2.0.0",
     "jasmine-core": "^2.4.1",
     "json-loader": "^0.5.4",
+    "jss": "~3.3.0",
+    "jss-loader": "~1.0.0",
     "karma": "^0.13.15",
     "karma-coverage": "^0.5.5",
     "karma-jasmine": "^0.3.6",
