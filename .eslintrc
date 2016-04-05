@@ -1,6 +1,6 @@
 {
- "root": true,
- "plugins": [
+  "root": true,
+  "plugins": [
     "html"
   ],
   "extends": "standard",
