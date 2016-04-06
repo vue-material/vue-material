@@ -11,4 +11,7 @@ before_install:
       npm install -g npm@latest-2
       npm --version
 script:
-  - npm run build
+  - |
+      git config --global user.name "zhanglingkang"
+      git config --global user.email "lingkangzhangjava@163.com"
+      npm run build
