@@ -1,4 +1,5 @@
-# vue-material
+
+# vue-material [![Build Status](https://travis-ci.org/zhanglingkang/vue-material.svg?branch=master)](https://travis-ci.org/zhanglingkang/vue-material)
 
 vue-material为遵循MIT协议的开源项目
 
