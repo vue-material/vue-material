@@ -3,9 +3,9 @@
 </style>
 
 <template>
-  <button :type="type" @click="onClick" :class="classes.button">
+  <button :type="3" @click="onClick" :class="classes.button">
     <span :class="classes.span">
-      <div :class="classes.div" :style="addUnit(wave)" v-for="wave in waveList">
+      <div :class="classes.div" v-style="wave" v-for="wave in waveList">
 
       </div>
     </span>
@@ -13,11 +13,13 @@
 
     </div>
     <slot></slot>
+    <div v-style="testStyle">xxx</div>
   </button>
 </template>
 
 <script type="text/babel">
-  import jss from '../../utils/jss'
+  import jss from '../../util/jss'
+  import '../../directives/style'
   let sheet = jss.createStyleSheet({
     button: {
       width: 100,
@@ -80,7 +82,7 @@
     data () {
       return {
         classes: sheet.classes,
-
+        testStyle: true,
         waveList: [],
         onClick: event => {
           let {waveList} = this

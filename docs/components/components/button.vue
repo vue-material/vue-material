@@ -1,5 +1,5 @@
 <template>
-  <m-button>test1</m-button>
+  <m-button>test122</m-button>
 </template>
 
 <script>
