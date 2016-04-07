@@ -15,14 +15,17 @@ script:
   git config --global user.name "zhanglingkang"
   git config --global user.email "lingkangzhangjava@163.com"
   npm run build
-  echo "https://${GITHUB_TOKEN}@${GITHUB_REF}"
-  gh-pages -d temp -r "https://${GITHUB_TOKEN}@${GITHUB_REF}"
+  cd temp
+  git init
+  git add .
+  git commit -m "Update docs"
+  git push --force  --quiet "https://${GITHUB_TOKEN}@${GITHUB_REF}" master:gh-pages
 branches:
   only:
   - master
-notifications:
-  email:
-  - 18510416163@163.com
+#notifications:
+#  email:
+#  - 18510416163@163.com
 env:
   global:
   - GITHUB_REF: github.com/zhanglingkang/vue-material.git
