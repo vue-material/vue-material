@@ -22,9 +22,9 @@ script:
 branches:
   only:
   - master
-#notifications:
-#  email:
-#  - 18510416163@163.com
+notifications:
+  email:
+  - 18510416163@163.com
 env:
   global:
   - GITHUB_REF: github.com/zhanglingkang/vue-material.git
