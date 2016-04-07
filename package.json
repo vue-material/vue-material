@@ -6,7 +6,7 @@
   "scripts": {
     "deploy": "gh-pages -d temp",
     "dev": "node build/dev-server.js && webpack --config build/webpack.dev.conf.js --progress --colors --display-chunks --display-error-details --watch",
-    "build": "node build/build.js && gh-pages -d temp",
+    "build": "node build/build.js",
     "unit": "karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",

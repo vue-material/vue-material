@@ -15,6 +15,8 @@ script:
   git config --global user.name "zhanglingkang"
   git config --global user.email "lingkangzhangjava@163.com"
   npm run build
+  echo "https://${GITHUB_TOKEN}@${GITHUB_REF}"
+  gh-pages -d temp -r "https://${GITHUB_TOKEN}@${GITHUB_REF}"
 branches:
   only:
   - master
@@ -23,5 +25,6 @@ notifications:
   - 18510416163@163.com
 env:
   global:
+  - GITHUB_REF: github.com/zhanglingkang/vue-material.git
   #GITHUB_TOKEN
   - secure: nicwV33SXqBKFNy6LaCmhgrDOu3ceAxUlKCw6za2KCysQXr00SSEob3cBDuKnvK4eYllvF5fXG7kbI1rTPoX/xHDykFuY/TLiB91bYqGmsAdEBx1Rr74lDSTQTUfKJyzIQvJnNdBYqL+BTIzyQd6SV3DWI/wGk4mOLLvUuSkJN6ef8zWAIJe1+HUJwWBZpJ3MYifsNnjsTBNz22LedhrS5bN8WW4luSAo5JC+juXV25o0pU4KtQTDnhR04jg4M8XiASIpIuPyXzVJmhJDMvQaLGqf4dfkqLe79kKElkQoch7xn6gbVrs29wh5GoIiiiv/KPi4wQ750F1lznjV3LnzN4bSe6ArJVIWXEwtHug5EBPwQM3NBDil0Qxitx6TC0HdSKR4Z1GXwUjDjR6+kqtdWnBxj2VsgG3Qg3zDStEDs1EnLkhiKmunq+Y+gK13DgSmw49ly5BmvP/Y7wuGfLpq1J6Cug/BYU+ilYz8AMVK4VIp6rIAd3wpxI8xj2KkiEQ2ioPGadj7i+s0MzrgCc7ZCnVF3mp267STuDb+sgt1+o0fm71yFljR+qEMixU3D3opTk73edqCrsrb0HyC2sSJ7la82TcHmT8SliqTBTMHN5x5IFpeloiHLYnam2NkYcBE//R+AbyYFyn3RHo45Jv7BjAWTL0NXxNd1tPbgYw2QA=
