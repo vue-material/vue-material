@@ -5,7 +5,12 @@
   ],
   "extends": "standard",
   "rules": {
-    "arrow-parens": [2, "as-needed"],
-    "no-debugger": 1
+    "arrow-parens": [
+      2,
+      "as-needed"
+    ],
+    "no-debugger": 1,
+    "no-unused-vars": 1,
+    "spaced-comment": 1
   }
 }

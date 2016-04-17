@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import jss from '../util/jss'
+import warn from '../util/warn'
 const RULE_REG = /[^{]+\{|}/g
-let {warn} = Vue.util
 Vue.directive('style', {
   deep: true,
   update (value) {
@@ -10,7 +10,7 @@ Vue.directive('style', {
       el.style.cssText = value
     } else if (typeof value === 'object') {
       el.style.cssText = jss.createRule(value).toString().replace(RULE_REG, '')
-    } else if (process.env.NODE_ENV !== 'production') {
+    } else {
       warn(`style 类型不正确,要求 string|object,现在为${typeof value}`)
     }
   }
