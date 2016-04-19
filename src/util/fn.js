@@ -3,6 +3,10 @@ export default {
   log (arg) {
     console.log(JSON.parse(JSON.stringify(arg)))
   },
+  /**
+   * 从此刻起的第二个动画帧执行fn
+   * @param fn
+   */
   nextAnimationFrame (fn) {
     window.requestAnimationFrame(() => {
       window.requestAnimationFrame(fn)
@@ -27,6 +31,18 @@ export default {
       return fnList.reverse().reduce((last, fn) => {
         return fn(last)
       }, arg)
+    }
+  },
+  once (fn) {
+    let run = false
+    let result
+    return (...args) => {
+      if (run) {
+        return result
+      } else {
+        run = true
+        return (result = fn.apply(this, args))
+      }
     }
   }
 }

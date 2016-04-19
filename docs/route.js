@@ -1,11 +1,15 @@
 export function configRouter (router) {
   router.map({
-    'components/button': {
-      component: require('./components/components/button.vue'),
+    'components/flat-button': {
+      component: require('./components/components/Flat-Button.vue'),
+      subRoutes: {}
+    },
+    'components/raised-button': {
+      component: require('./components/components/raised-Button.vue'),
       subRoutes: {}
     },
     '*': {
-      component: require('./components/not-found.vue')
+      component: require('./components/Not-Found.vue')
     }
   })
 }

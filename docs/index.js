@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { configRouter } from './route'
-import App from './components/app.vue'
+import App from './components/App.vue'
 
 require('es6-promise').polyfill()
 

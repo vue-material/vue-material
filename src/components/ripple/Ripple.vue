@@ -1,5 +1,6 @@
 <template>
   <div :class="classes.ripple">
+    <m-focus-ripple v-if="showFocusRipple" :ripple-color="rippleColor" :opacity="opacity"></m-focus-ripple>
     <div :class="classes.oneRipple" v-style="style" v-for="style in rippleList">
 
     </div>
@@ -12,7 +13,8 @@
 <script type="text/babel">
   import Vue from 'vue'
   import jss from 'jss'
-  import fn from '../util/fn'
+  import fn from '../../util/fn'
+  import mFocusRipple from './Focus-Ripple.vue'
   let duration = 300
   let {log, nextAnimationFrame} = fn
   let sheet = jss.createStyleSheet({
@@ -34,12 +36,6 @@
     }
   }).attach()
   export default {
-    data () {
-      return {
-        classes: sheet.classes,
-        rippleList: []
-      }
-    },
     props: {
       /**
        * 按钮点击后波浪的颜色
@@ -50,7 +46,20 @@
        */
       opacity: {
         type: Number,
-        default: 0.2
+        default: 0.3
+      },
+      /**
+       * 一个无需点击自动显示的波浪效果
+       */
+      showFocusRipple: {
+        type: Boolean,
+        default: false
+      }
+    },
+    data () {
+      return {
+        classes: sheet.classes,
+        rippleList: []
       }
     },
     methods: {
@@ -89,6 +98,8 @@
         })
       }
     },
-    components: {}
+    components: {
+      mFocusRipple
+    }
   }
 </script>
