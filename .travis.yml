@@ -1,0 +1,32 @@
+language: node_js
+node_js:
+- 5
+sudo: false
+cache:
+  directories:
+  - node_modules
+before_install:
+- |
+  npm install -g npm@latest-2
+  npm --version
+script:
+- |
+  git config --global user.name "zhanglingkang"
+  git config --global user.email "lingkangzhangjava@163.com"
+  npm run build
+  cd temp
+  git init
+  git add .
+  git commit -m "Update docs"
+  git push --force  --quiet "https://${GITHUB_TOKEN}@${GITHUB_REF}" master:gh-pages
+branches:
+  only:
+  - master
+notifications:
+  email:
+  - 18510416163@163.com
+env:
+  global:
+  - GITHUB_REF: github.com/zhanglingkang/vue-material.git
+  # GITHUB_TOKEN
+  - secure: iCFlg8WmZXw/a1hFWQOhsvp5s1zIQY2oX0/3oblAcom4yXNRF9oyyjxqWzJMLLc58qrb7XFwDvW/AyuornNVtrpND2FXXemBrnfz+NAFx8lppcRM98L+VWl5Vd3xpzkzVoSsboTijk+3NUdrqk7XDXBWMCGIvGSrRrvdt5ck7i3+hPTZGb/r7I6W5JNA+87itGCFTcjstGbLnVsLTWCvsXPdE/mQeXrYFGhNJ6PFXf3zxHe9I7Wb/mvfgyuH/vd5/BE3Dwq56Sti9KppiLRnQ3TzrtGJ+B7FkyzQMO0iUTaAHhE0jlxZ51T0Bn3M84QH7zYy6k85Pu0jPDM8ktOoUH4FHl5oDBBghIHWkHhikUnnYUTeX783XWr3EH+nlImbQ8RRuQGmrz9M1iNLmyTLgX85R4uKlReSL8/a4g7K7574DnRMPQloP0FbhGaj4ZBTpchW4KQkn8DPC6fwxc06D5Fi3tMdLd7otmRLYwDnuB6CEmYsQ5FUOlhRrxuF934GyIHWEIvzI3QItjk7S8v+PrCa686LR1K8AiFbtcDsw7qC5IKJffyyutpf5jXKDUJ0o9ajykxjknIh6q80l4tvK8t9vN4cbBn2Pd2jniYyEuWDB6FWph9v8dfxmdwyqnzp71NOGYURNXokrlAb/pjBplGUmqq3hjI3vqlFJHao1qM=
