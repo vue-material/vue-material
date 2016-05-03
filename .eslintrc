@@ -11,6 +11,16 @@
     ],
     "no-debugger": 1,
     "no-unused-vars": 1,
-    "spaced-comment": 1
+    "spaced-comment": 1,
+    "operator-linebreak": [
+      1,
+      "before",
+      {
+        "overrides": {
+          "?": "after",
+          ":": "after"
+        }
+      }
+    ]
   }
 }

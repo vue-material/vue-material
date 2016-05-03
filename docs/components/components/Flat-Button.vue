@@ -7,7 +7,6 @@
   <m-button label="Default"><span slot="before">Before</span></m-button>
   <m-button label="Default"><span>After</span></m-button>
   <m-button label="Default"><span slot="after">After</span></m-button>
-
 </template>
 
 <script>

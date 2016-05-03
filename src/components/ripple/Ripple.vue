@@ -1,10 +1,10 @@
 <template>
-  <div :class="classes.ripple">
+  <div v-style="styles.ripple">
     <m-focus-ripple v-if="showFocusRipple" :ripple-color="rippleColor" :opacity="opacity"></m-focus-ripple>
-    <div :class="classes.oneRipple" v-style="style" v-for="style in rippleList">
+    <div v-style="style" v-for="style in rippleList">
 
     </div>
-    <div :class="classes.click" @click="onClick">
+    <div v-style="styles.click" @click="onClick">
 
     </div>
   </div>
@@ -17,24 +17,6 @@
   import mFocusRipple from './Focus-Ripple.vue'
   let duration = 300
   let {nextAnimationFrame} = fn
-  let sheet = jss.createStyleSheet({
-    ripple: {
-      position: 'absolute',
-      overflow: 'hidden',
-      left: 0,
-      top: 0,
-      right: 0,
-      bottom: 0
-    },
-    click: {
-      extend: 'ripple'
-    },
-    oneRipple: {
-      position: 'absolute',
-      borderRadius: '50%',
-      transition: `all ${duration}ms linear`
-    }
-  }).attach()
   export default {
     props: {
       /**
@@ -58,7 +40,6 @@
     },
     data () {
       return {
-        classes: sheet.classes,
         rippleList: []
       }
     },
@@ -85,6 +66,9 @@
           opacity: this.opacity,
           transform: 'scale(0)',
           backgroundColor: this.rippleColor,
+          position: 'absolute',
+          borderRadius: '50%',
+          transition: `all ${duration}ms linear`,
           ...this.getRippleStyle({clickX: event.offsetX, clickY: event.offsetY})
         })
         let style = rippleList[rippleList.length - 1]
@@ -96,6 +80,22 @@
             }, duration)
           })
         })
+      }
+    },
+    computed: {
+      styles () {
+        let ripple = {
+          position: 'absolute',
+          overflow: 'hidden',
+          left: 0,
+          top: 0,
+          right: 0,
+          bottom: 0
+        }
+        return {
+          ripple,
+          click: ripple
+        }
       }
     },
     components: {
