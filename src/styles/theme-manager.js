@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import debug from '../util/debug'
+import rawTheme from './rawTheme'
 let {warn} = debug
 /**
  * 验证theme是否是一个有效的主题
@@ -8,10 +9,10 @@ let {warn} = debug
  */
 function validateTheme (theme) {
   if (
-    !theme ||
-    typeof theme.primaryColor !== 'string' ||
-    typeof theme.secondaryColor !== 'string' ||
-    typeof theme.disabledColor !== 'string'
+    !theme
+    || typeof theme.primaryColor !== 'string'
+    || typeof theme.secondaryColor !== 'string'
+    || typeof theme.disabledColor !== 'string'
   ) {
     return false
   } else {
@@ -19,11 +20,7 @@ function validateTheme (theme) {
   }
 }
 function getRawTheme () {
-  return {
-    primaryColor: 'rgb(255, 64, 129)',
-    secondaryColor: 'rgb(0, 188, 212)',
-    disabledColor: 'rgba(0, 0, 0, 0.3)'
-  }
+  return rawTheme
 }
 function setTheme (theme) {
   if (validateTheme(theme)) {

@@ -10,8 +10,8 @@
     :on-mouse-enter="onMouseEnter"
     :on-mouse-leave="onMouseLeave"
     :primary="primary"
-    :ripple-color="styles.rippleColor"
-    :secondary="secondary">
+    :secondary="secondary"
+    :ripple-color="styles.rippleColor">
     <div slot="after" v-style="styles.overlay" v-show="button.hover||keyBoardFocus"></div>
     <slot name="before" slot="before"></slot>
     <slot name="after" slot="after"></slot>
@@ -19,14 +19,12 @@
   </m-button>
 </template>
 <script type="text/babel">
-  import jss from '../../util/jss'
   import mButton from './Button.vue'
   import color from 'color'
   import themeManager from '../../styles/theme-manager'
   import styleUtil from '../../styles/util'
 
   let muiTheme = themeManager.getTheme()
-
   export default{
     props: {
       backgroundColor: String,
@@ -64,6 +62,10 @@
         default: false
       },
       rippleColor: String,
+      mini: {
+        type: Boolean,
+        default: false
+      },
       style: [Object, Array]
     },
     data () {
@@ -95,6 +97,7 @@
           backgroundColor = raisedButton.secondaryColor
           labelColor = raisedButton.secondaryTextColor
         }
+        let size = this.mini ? 40 : 56
         return {
           label: styleUtil.mergeStyle(
             {
@@ -102,13 +105,15 @@
             },
             this.labelStyle
           ),
-          button: styleUtil.mergeStyle(
-            {
-              backgroundColor,
-              boxShadow: '0px 0px 5px rgba(0,0,0,0.2)'
-            },
-            this.style
-          ),
+          button: {
+            backgroundColor,
+            boxShadow: '0px 3px 5px rgba(0,0,0,0.2)',
+            transform: 'translate3d(0,0,0)', //设置了translate3d后,圆角部分也会hidden,否则不会
+            overflow: 'hidden',
+            borderRadius: '50%',
+            width: size,
+            height: size
+          },
           overlay: {
             backgroundColor: color(labelColor).alpha(opacity).rgbString(),
             position: 'absolute',

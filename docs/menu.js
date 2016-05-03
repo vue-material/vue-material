@@ -12,6 +12,10 @@ export default [
           {
             name: 'Raised Button',
             path: '/components/raised-button'
+          },
+          {
+            name: 'Floating Action Button',
+            path: '/components/floating-action-button'
           }
         ]
       }
