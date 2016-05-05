@@ -1,4 +1,5 @@
 <template>
+  <!--<span v-style="styles.root">-->
   <m-button
     :background-color="backgroundColor"
     :disabled="disabled"
@@ -6,6 +7,7 @@
     :label="label"
     :label-style="styles.label"
     :href="href"
+    :on-click="onClick"
     :on-blur="handleBlur"
     :on-keyboard-focus="handleKeyBoardFocus"
     :on-mouse-enter="onMouseEnter"
@@ -18,6 +20,7 @@
     <slot name="after" slot="after"></slot>
     <slot></slot>
   </m-button>
+  <!--</span>-->
 </template>
 
 <script type="text/babel">
@@ -68,7 +71,10 @@
       labelStyle: [Object, Array],
 
       href: String,
-
+      onClick: {
+        type: Function,
+        default: () => {}
+      },
       /**
        * 当元素通过键盘获取焦点时调用,此时按钮上会波浪效果
        */
@@ -131,6 +137,7 @@
           }
         }, this.style)
         return {
+//          root: styleUtil.mergeStyle({}, this.style),
           button,
           label: styleUtil.mergeStyle({}, this.labelStyle)
         }

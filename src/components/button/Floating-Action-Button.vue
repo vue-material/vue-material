@@ -1,4 +1,5 @@
 <template>
+  <!--<span v-style="styles.root">-->
   <m-button
     v-el:button
     :style="styles.button"
@@ -17,6 +18,7 @@
     <slot name="after" slot="after"></slot>
     <slot></slot>
   </m-button>
+  <!--</span>-->
 </template>
 <script type="text/babel">
   import mButton from './Button.vue'
@@ -99,13 +101,14 @@
         }
         let size = this.mini ? 40 : 56
         return {
+//          root: styleUtil.mergeStyle({}, this.style),
           label: styleUtil.mergeStyle(
             {
               color: labelColor
             },
             this.labelStyle
           ),
-          button: {
+          button: styleUtil.mergeStyle({
             backgroundColor,
             boxShadow: '0px 3px 5px rgba(0,0,0,0.2)',
             transform: 'translate3d(0,0,0)', //设置了translate3d后,圆角部分也会hidden,否则不会
@@ -113,7 +116,7 @@
             borderRadius: '50%',
             width: size,
             height: size
-          },
+          }, this.style),
           overlay: {
             backgroundColor: color(labelColor).alpha(opacity).rgbString(),
             position: 'absolute',

@@ -3,27 +3,17 @@ import jss from '../util/jss'
 import debug from '../util/debug'
 import event from '../util/event'
 import styleUtil from '../styles/util'
+import elData from '../util/el-data'
 
 let {toObject: styleArray2Object} = styleUtil
 let {warn} = debug
-let el2DataMap = new Map()
-/**
- * value 为空时,为getter,否则为setter
- * @param el
- */
-function elData (el, key, value) {
-  if (!el2DataMap.get(el)) {
-    el2DataMap.set(el, {})
-  }
-  let data = el2DataMap.get(el)
-  if (value === undefined) {
-    return data[key]
-  } else {
-    data[key] = value
-    if (data.bindState && ['hover', 'disabled', 'focus'].indexOf(key) !== -1) {
-      let {vm, path} = data.bindState
-      vm.$set(path, value)
-    }
+
+function updatePseudoClassData (el, key, value) {
+  elData(el, key, value)
+  let bindState = elData(el, 'bindState')
+  if (bindState && ['hover', 'disabled', 'focus'].indexOf(key) !== -1) {
+    let {vm, path} = bindState
+    vm.$set(path, value)
   }
 }
 
@@ -82,7 +72,7 @@ let hoverPlugin = {
     let initialStyle = {}
     elData(el, 'removeMouseLeaveHandler',
       event.addEventListener(el, 'mouseenter', () => {
-        elData(el, 'hover', true)
+        updatePseudoClassData(el, 'hover', true)
         for (let property in finalHoverStyle) {
           initialStyle[property] = el.style.getPropertyValue(property)
           window.requestAnimationFrame(() => {
@@ -93,7 +83,7 @@ let hoverPlugin = {
     )
     elData(el, 'removeMouseEnterHandler',
       event.addEventListener(el, 'mouseleave', () => {
-        elData(el, 'hover', false)
+        updatePseudoClassData(el, 'hover', false)
         for (let property in initialStyle) {
           el.style.setProperty(property, initialStyle[property])
         }

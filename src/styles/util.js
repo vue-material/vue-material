@@ -22,7 +22,13 @@ function toObject (style) {
  * 返回合并后的样式
  */
 function mergeStyle (target, source) {
-  return Object.assign(target, toObject(source))
+  let result = Object.assign({}, target, toObject(source))
+  Object.keys(target).forEach(key => {
+    if (typeof target[key] === 'object') {
+      result[key] = Object.assign({}, target[key], result[key])
+    }
+  })
+  return result
 }
 export default {
   mergeStyle,
