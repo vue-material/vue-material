@@ -22,9 +22,11 @@
             <ul v-if="firstMenuItem.children && firstMenuItem.children.length!==0">
               <li v-for="secondMenuItem in firstMenuItem.children"
                   v-style="[styles.main.secondMenu]">
-                <m-button :label="secondMenuItem.name"
-                          :label-style="styles.getMenuLabelStyle(2)"
-                          :style="[styles.getMenuNameStyle()]"></m-button>
+                <div @click="handleClick(secondMenuItem)">
+                  <m-button :label="secondMenuItem.name"
+                            :label-style="styles.getMenuLabelStyle(2)"
+                            :style="[styles.getMenuNameStyle(secondMenuItem)]"></m-button>
+                </div>
                 <ul v-if="secondMenuItem.children && secondMenuItem.children.length!==0">
                   <li v-for="thirdMenuItem in secondMenuItem.children">
                     <div @click="handleClick(thirdMenuItem)">
@@ -51,8 +53,8 @@
   import jss from '../../src/util/jss'
   import fn from '../../src/util/fn'
   import mButton from '../../src/components/button/Flat-Button'
-  let {copy} = fn
 
+  let {copy} = fn
   function getMenu () {
     let menuCopy = copy(menu)
 
@@ -86,9 +88,11 @@
         return '#!' + menuItem.path
       },
       handleClick (menuItem) {
-        setTimeout(() => {
-          window.location.hash = menuItem.path
-        }, 200)
+        if (menuItem.path) {
+          setTimeout(() => {
+            window.location.hash = this.getPath(menuItem)
+          }, 200)
+        }
       }
     },
     computed: {
@@ -135,24 +139,12 @@
             }
           },
           right: {
-            flex: 1
+            flex: 1,
+            padding: 15
           },
           a: {
             textDecoration: 'none',
             color: 'black'
-          },
-          menuNameContainer: {
-            color: 'red',
-            ':hover': [
-              {
-                backgroundColor: 'rgba(0, 0, 0, .2)'
-              }
-            ]
-          },
-          getThreeMenuItem (menuItem) {
-            return {
-              backgroundColor: menuItem.active ? 'rgba(0, 0, 0, .2)' : ''
-            }
           },
           getMenuLabelStyle (menuLevel) {
             return {
@@ -166,14 +158,19 @@
            */
           getMenuNameStyle (menuItem) {
             let backgroundColor = 'initial'
+            let hover = {}
             if (menuItem && menuItem.active) {
               backgroundColor = 'rgba(0, 0, 0, .2)'
+              hover = {
+                backgroundColor
+              }
             }
             return {
               textAlign: 'left',
               backgroundColor,
               padding: 2,
-              width: '100%'
+              width: '100%',
+              ':hover': hover
             }
           }
         }

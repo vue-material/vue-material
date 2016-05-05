@@ -18,6 +18,10 @@ export default [
             path: '/components/floating-action-button'
           }
         ]
+      },
+      {
+        name: 'Popover',
+        path: '/components/popover'
       }
     ]
   }
