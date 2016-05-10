@@ -13,7 +13,7 @@
       </nav>
     </header>
     <div v-style="styles.main">
-      <nav>
+      <nav v-style="styles.main.nav">
         <ul>
           <li v-for="firstMenuItem in menu">
             <m-button :label="firstMenuItem.name"
@@ -103,7 +103,7 @@
           root: {
             display: 'flex',
             flexDirection: 'column',
-            height: '100vh'
+            minHeight: '100vh'
           },
           header: {
             height: headerHeight,
@@ -135,7 +135,7 @@
             position: 'relative',
             nav: {
               width: leftNavWidth,
-              boxShadow: 'rgba(0, 0, 0, 0.15) 0px 3px 10px, rgba(0, 0, 0, 0.2) 0px 3px 10px'
+              boxShadow: 'black -2px 0 10px'
             }
           },
           right: {
@@ -167,6 +167,7 @@
             }
             return {
               textAlign: 'left',
+              borderRadius: 0,
               backgroundColor,
               padding: 2,
               width: '100%',

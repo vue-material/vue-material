@@ -93,6 +93,7 @@
         return this.getTransformPair()
       },
       styles () {
+        let {targetOrigin} = this
         return {
           popover: {
             ...this.position,
@@ -100,7 +101,7 @@
             zIndex: 1001,
             transform: this.transform,
             transition: this.transition,
-            transformOrigin: '0 0'
+            transformOrigin: `${targetOrigin.horizontal} ${targetOrigin.vertical}`.replace('middle', 'center')
           },
           maskLayer: {
             position: 'fixed',
@@ -163,22 +164,26 @@
           let [popoverWidth, popoverHeight] = [popoverComputedStyle.width, popoverComputedStyle.height].map(num => parseInt(num))
           let anchorPosition = dom.getNodeDocumentOffset(this.anchorEl)
           let {vertical: anchorVertical, horizontal: anchorHorizontal} = this.anchorOrigin
-          let {popoverVertical, popoverHorizontal} = this.$els.popover
+          let {vertical: popoverVertical, horizontal: popoverHorizontal} = this.targetOrigin
           let anchorPositionOffsetMap = {
-            top: 0,
-            center: anchorHeight / 2,
-            bottom: anchorHeight,
             left: 0,
             middle: anchorWidth / 2,
-            right: anchorWidth
+            right: anchorWidth,
+            top: 0,
+            center: anchorHeight / 2,
+            bottom: anchorHeight
           }
           let popoverPositionOffsetMap = {
             left: 0,
-            top: 0
+            middle: -popoverWidth / 2,
+            right: -popoverWidth,
+            top: 0,
+            center: -popoverHeight / 2,
+            bottom: -popoverHeight
           }
           position = {
-            left: anchorPosition.left + anchorPositionOffsetMap[anchorHorizontal],
-            top: anchorPosition.top + anchorPositionOffsetMap[anchorVertical]
+            left: anchorPosition.left + anchorPositionOffsetMap[anchorHorizontal] + popoverPositionOffsetMap[popoverHorizontal],
+            top: anchorPosition.top + anchorPositionOffsetMap[anchorVertical] + popoverPositionOffsetMap[popoverVertical]
           }
         }
         return position
