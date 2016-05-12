@@ -2,7 +2,7 @@
   <button v-style="styles.button"
           @focus="handleFocus"
           @blur="handleBlur"
-          @click="handleClick"
+          @click="handleClick($event)"
           @mouseenter="handleMouseEnter"
           @mouseleave="handleMouseLeave"
           tabindex="0"
@@ -65,6 +65,11 @@
        * 按钮点击时跳转的url地址
        */
       href: String,
+
+      onClick: {
+        type: Function,
+        default: () => {}
+      },
 
       onBlur: {
         type: Function,
@@ -171,13 +176,14 @@
           }
         }, 100)
       },
-      handleClick () {
+      handleClick ($event) {
         if (this.href) {
           window.location = this.href
         }
         tabPressed = false
         clearTimeout(this.focusTimeout)
         this.showFocusRipple = false
+        this.onClick($event)
       },
       handleMouseEnter () {
         this.onMouseEnter()

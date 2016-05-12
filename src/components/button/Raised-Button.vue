@@ -5,6 +5,7 @@
     :label-style="styles.label"
     :disabled="disabled"
     :label="label"
+    :on-click="onClick"
     :on-blur="handleBlur"
     :on-keyboard-focus="handleKeyBoardFocus"
     :on-mouse-enter="onMouseEnter"
@@ -35,6 +36,10 @@
         default: false
       },
       label: String,
+      onClick: {
+        type: Function,
+        default: () => {}
+      },
       onMouseDown: {
         type: Function,
         default: () => {}
