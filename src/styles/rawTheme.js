@@ -1,5 +1,5 @@
-const primaryColor = 'rgb(255, 64, 129)'
-const secondaryColor = 'rgb(0, 188, 212)'
+const primaryColor = 'rgb(0, 188, 212)'
+const secondaryColor = 'rgb(255, 64, 129)'
 const disabledColor = 'rgb(229,229,229)'
 const button = {
   defaultColor: 'white',

@@ -1,0 +1,18 @@
+{
+  "name": "vue-material-docs",
+  "version": "0.0.1",
+  "scripts": {
+    "deploy": "gh-pages -d temp",
+    "dev": "node build/dev-server.js && webpack --config build/webpack.dev.conf.js --progress --colors --display-chunks --display-error-details --watch",
+    "build": "node build/build.js",
+    "lint": "eslint src/** "
+  },
+  "dependencies": {
+    "vue-router": "~0.7.13",
+    "raw-loader": "~0.5.1",
+    "express": "^4.13.3",
+    "gh-pages": "~0.11.0",
+    "html-loader": "~0.4.3",
+    "shelljs": "^0.6.0"
+  }
+}

@@ -4,7 +4,7 @@
 </template>
 <script type="text/babel">
   import Vue from 'vue'
-  import fn from '../../src/util/fn'
+  import fn from 'vuejs-material/util/fn'
 
   let {compose} = fn
 

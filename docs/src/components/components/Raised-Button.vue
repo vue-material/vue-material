@@ -12,8 +12,8 @@
 </template>
 
 <script>
-  import mButton from '../../../src/components/button/Raised-Button.vue'
-  import jss from '../../../src/util/jss'
+  import mButton from 'vuejs-material/components/button/Raised-Button.vue'
+  import jss from 'vuejs-material/util/jss'
   export default{
     data () {
       return {}

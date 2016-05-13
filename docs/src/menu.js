@@ -22,6 +22,15 @@ export default [
       {
         name: 'Popover',
         path: '/components/popover'
+      },
+      {
+        name: 'Switches',
+        children: [
+          {
+            name: 'Toggle',
+            path: '/components/Toggle'
+          }
+        ]
       }
     ]
   }
