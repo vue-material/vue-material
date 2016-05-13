@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import mButton from '../../../src/components/button/Flat-Button.vue'
+  import mButton from 'vuejs-material/components/button/Flat-Button.vue'
   export default{
     data () {
       return {}

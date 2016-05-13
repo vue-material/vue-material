@@ -9,8 +9,8 @@
   <m-button :disabled="true" :mini="true" label="+"></m-button>
 </template>
 <script type="text/babel">
-  import mButton from '../../../src/components/button/Floating-Action-Button'
-  import jss from '../../../src/util/jss'
+  import mButton from 'vuejs-material/components/button/Floating-Action-Button'
+  import jss from 'vuejs-material/util/jss'
   export default{
     data () {
       return {}

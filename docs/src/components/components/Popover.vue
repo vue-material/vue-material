@@ -61,8 +61,8 @@
   </div>
 </template>
 <script type="text/babel">
-  import mButton from '../../../src/components/button/Raised-Button'
-  import mPopover from '../../../src/components/Popover'
+  import mButton from 'vuejs-material/components/button/Raised-Button'
+  import mPopover from 'vuejs-material/components/Popover'
 
   export default{
     data () {
