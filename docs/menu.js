@@ -22,6 +22,15 @@ export default [
       {
         name: 'Popover',
         path: '/components/popover'
+      },
+      {
+        name: 'Icons',
+        children: [
+          {
+            name: 'SVG Icon',
+            path: '/components/svg-icon'
+          }
+        ]
       }
     ]
   }
