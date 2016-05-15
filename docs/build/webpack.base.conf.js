@@ -1,10 +1,9 @@
 var path = require('path')
 var cssLoaders = require('./css-loaders')
-var projectRoot = path.resolve(__dirname, '../')
 
 module.exports = {
   entry: {
-    app: './docs/index.js'
+    app: './src/index.js'
   },
   output: {
     path: path.resolve(__dirname, '../temp'),
@@ -14,7 +13,7 @@ module.exports = {
     extensions: ['', '.js', '.vue'],
     fallback: [path.join(__dirname, '../node_modules')],
     alias: {
-      'src': path.resolve(__dirname, '../src')
+      'vuejs-material': path.resolve(__dirname, '../../src')
     }
   },
   resolveLoader: {
@@ -25,13 +24,11 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'eslint',
-        include: projectRoot,
         exclude: /node_modules/
       },
       {
         test: /\.js$/,
         loader: 'eslint',
-        include: projectRoot,
         exclude: /node_modules/
       }
     ],
@@ -43,7 +40,6 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel',
-        include: projectRoot,
         exclude: /node_modules/
       },
       {

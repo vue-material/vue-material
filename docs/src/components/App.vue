@@ -50,9 +50,9 @@
 
 <script type="text/babel">
   import menu from '../menu'
-  import jss from '../../src/util/jss'
-  import fn from '../../src/util/fn'
-  import mButton from '../../src/components/button/Flat-Button'
+  import jss from 'vuejs-material/util/jss'
+  import fn from 'vuejs-material/util/fn'
+  import mButton from 'vuejs-material/components/button/Flat-Button'
 
   let {copy} = fn
   function getMenu () {
@@ -134,7 +134,7 @@
             flex: 1,
             position: 'relative',
             nav: {
-              width: leftNavWidth,
+              minWidth: leftNavWidth,
               boxShadow: 'black -2px 0 10px'
             }
           },

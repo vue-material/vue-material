@@ -29,6 +29,14 @@ export default [
           {
             name: 'SVG Icon',
             path: '/components/svg-icon'
+          }]
+      },
+      {
+        name: 'Switches',
+        children: [
+          {
+            name: 'Toggle',
+            path: '/components/Toggle'
           }
         ]
       }
