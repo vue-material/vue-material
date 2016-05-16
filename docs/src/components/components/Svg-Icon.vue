@@ -3,13 +3,13 @@
   <m-action-accessible-icon ></m-action-accessible-icon>
 </template>
 <script type="text/babel">
-  import mActionHomeIcon from '../../../src/components/svg-icons/action/Home.vue'
-  import mActionAccessibleIcon from '../../../src/components/svg-icons/action/Accessible.vue'
+  import mActionHomeIcon from 'vuejs-material/components/svg-icons/action/Home.vue'
+  import mActionAccessibleIcon from 'vuejs-material/components/svg-icons/action/Accessible.vue'
   export default{
     data () {
       let iconStyle = {
-        width: '36px',
-        height: '36px'
+        width: 36,
+        height: 36
       }
       return {iconStyle}
     },

@@ -31,18 +31,15 @@
        href: String,
        onClick: {
          type: Function,
-         default: () => {
-         }
+         default: () => {}
        },
        onMouseEnter: {
          type: Function,
-         default: () => {
-         }
+         default: () => {}
        },
        onMouseLeave: {
          type: Function,
-         default: () => {
-         }
+         default: () => {}
        },
        style: [Object, Array]
      },
@@ -51,7 +48,6 @@
          let hoverColor = this.hoverColor || '#000'
          let color = this.color || '#000'
          let icon = styleUtil.mergeStyle({
-           backgroundColor: this.keyBoardFocus ? hoverColor : 'initial',
            fill: color,
            ':hover': {
              fill: hoverColor
