@@ -7,28 +7,28 @@ export default [
         children: [
           {
             name: 'Flat Button',
-            path: '/components/flat-button'
+            path: '/page/flat-button'
           },
           {
             name: 'Raised Button',
-            path: '/components/raised-button'
+            path: '/page/raised-button'
           },
           {
             name: 'Floating Action Button',
-            path: '/components/floating-action-button'
+            path: '/page/floating-action-button'
           }
         ]
       },
       {
         name: 'Popover',
-        path: '/components/popover'
+        path: '/page/popover'
       },
       {
         name: 'Icons',
         children: [
           {
             name: 'SVG Icon',
-            path: '/components/svg-icon'
+            path: '/page/svg-icon'
           }]
       },
       {
@@ -36,7 +36,7 @@ export default [
         children: [
           {
             name: 'Toggle',
-            path: '/components/Toggle'
+            path: '/page/Toggle'
           }
         ]
       }

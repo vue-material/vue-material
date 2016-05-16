@@ -8,7 +8,7 @@ let {object, compose} = fn
 
 let routes = [
   [
-    'components/:component',
+    'page/:component',
     {
       component: ComponentTemplate,
       subRoutes: {}
