@@ -5,6 +5,7 @@
 <script type="text/babel">
   import mActionHomeIcon from 'vuejs-material/components/svg-icons/action/Home.vue'
   import mActionAccessibleIcon from 'vuejs-material/components/svg-icons/action/Accessible.vue'
+
   export default{
     data () {
       let iconStyle = {

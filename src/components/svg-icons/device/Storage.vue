@@ -3,12 +3,11 @@
    <svg is="m-svg-icon" :color="color"
         :hover-color="hoverColor"
         :view-box.camel="viewBox"
-        :href="href"
         :on-click="onClick"
         :on-mouse-enter="onMouseEnter"
         :on-mouse-leave="onMouseLeave"
         :style="styles.icon">
-     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+     <path d="M2 20h20v-4H2v4zm2-3h2v2H4v-2zM2 4v4h20V4H2zm4 3H4V5h2v2zm-4 7h20v-4H2v4zm2-3h2v2H4v-2z"/>
    </svg>
  </template>
  <script type="text/babel">
@@ -28,7 +27,6 @@
          type: String,
          default: '0 0 24 24'
        },
-       href: String,
        onClick: {
          type: Function,
          default: () => {}

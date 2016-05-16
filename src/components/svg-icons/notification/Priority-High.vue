@@ -3,12 +3,11 @@
    <svg is="m-svg-icon" :color="color"
         :hover-color="hoverColor"
         :view-box.camel="viewBox"
-        :href="href"
         :on-click="onClick"
         :on-mouse-enter="onMouseEnter"
         :on-mouse-leave="onMouseLeave"
         :style="styles.icon">
-     circle cx="12" cy="19" r="2"/><path d="M10 3h4v12h-4z"/> d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+     <circle cx="12" cy="19" r="2"/><path d="M10 3h4v12h-4z"/>
    </svg>
  </template>
  <script type="text/babel">
@@ -28,7 +27,6 @@
          type: String,
          default: '0 0 24 24'
        },
-       href: String,
        onClick: {
          type: Function,
          default: () => {}
