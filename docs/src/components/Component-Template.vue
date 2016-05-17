@@ -26,7 +26,7 @@
           str => str.split('-'),
           str => str.substring(str.lastIndexOf('/') + 1)
         )(this.$route.params.component)
-        let component = require('./components/' + componentName)
+        let component = require('./page/' + componentName)
         let {components} = this.$options
         if (!components[componentName]) {
           //还没搞清楚问什么需要Vue.extend
