@@ -39,10 +39,8 @@
       }
     },
     methods: {
-      handleClick ($event) {
-        if (this.href) {
-          window.location = this.href
-        }
+      handleClick () {
+        this.onClick()
       },
       handleMouseEnter () {
         this.onMouseEnter()
