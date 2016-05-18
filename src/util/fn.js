@@ -52,5 +52,18 @@ export default {
       result = JSON.parse(JSON.stringify(source))
       return result
     }
+  },
+  /**
+   * 类似于函数的map
+   * @param {Object} obj
+   * @param {(key,value)=>{}} fn
+   *
+   */
+  map (obj, fn) {
+    let result = {}
+    for (var key in obj) {
+      result[key] = fn(key, obj[key])
+    }
+    return result
   }
 }
