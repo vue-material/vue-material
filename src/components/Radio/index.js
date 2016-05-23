@@ -1,6 +1,6 @@
 import Radio from './Radio'
 import RadioGroup from './Radio-Group'
-export default {
+export {
   Radio,
   RadioGroup
 }

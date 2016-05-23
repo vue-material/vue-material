@@ -12,15 +12,19 @@ function typeOf (value) {
 function isType (type) {
   return value => typeOf(value) === type
 }
-
-export default {
+let isNumber = isType(Number)
+let isArray = isType(Array)
+let isBoolean = isType(Boolean)
+let isString = isType(String)
+let isObject = isType(Object)
+let isFunction = isType(Function)
+export {
   typeOf,
   isType,
-  isNumber: isType(Number),
-  isBoolean: isType(Boolean),
-  isString: isType(String),
-  isObject: isType(Object),
-  isArray: isType(Array),
-  isFunction: isType(Function)
+  isNumber,
+  isBoolean,
+  isString,
+  isObject,
+  isArray,
+  isFunction
 }
-

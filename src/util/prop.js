@@ -1,8 +1,7 @@
 import fn from './fn'
-import type from './type'
+import { typeOf, isObject, isFunction, isArray } from './type'
 
 let {map} = fn
-let {typeOf, isObject, isFunction} = type
 /**
  * 此函数用于简化组件prop属性的编写
  * @param {Object} propObj
@@ -41,10 +40,10 @@ export function defaultProps (propObj) {
       let type
       //判断value是否是[String,Number...]之一
       if (value
-        && window[value]
-        && isFunction(window[value])
-        && /native code/.test(window[value].toString())) {
-        type = window[value]
+        && isFunction(value)
+        && window[value.name]
+        && /native code/.test(value.toString())) {
+        type = value
       } else {
         type = typeOf(value)
       }
