@@ -29,7 +29,8 @@ export default [
           {
             name: 'SVG Icon',
             path: '/page/svg-icon'
-          }]
+          }
+        ]
       },
       {
         name: 'Switches',
@@ -37,6 +38,10 @@ export default [
           {
             name: 'Toggle',
             path: '/page/Toggle'
+          },
+          {
+            name: 'Radio Button',
+            path: '/page/Radio'
           }
         ]
       }
