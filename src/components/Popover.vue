@@ -6,6 +6,7 @@
   import dom from '../util/dom'
   import debug from '../util/debug'
   import fn from '../util/fn'
+  import { defaultProps, any, oneOf, oneOfType } from '../util/prop'
 
   let {warn} = debug
   let {nextAnimationFrame} = fn
@@ -19,7 +20,7 @@
   `
   const duration = 200
   export default {
-    props: {
+    props: defaultProps({
       anchorEl: window.Element,
       visible: {
         type: Boolean,
@@ -27,57 +28,26 @@
         twoWay: true
       },
       anchorOrigin: {
-        type: Object,
-        default () {
-          return {
-            vertical: 'bottom',
-            horizontal: 'left'
-          }
-        }
+        vertical: 'bottom',
+        horizontal: 'left'
       },
-      animated: {
-        type: Boolean,
-        default: true
-      },
+      animated: true,
       /**
        * 可选值 'from-top','from-origin'
        */
-      animation: {
-        type: String,
-        default: ''
-      },
+      animation: oneOf(['from-top', 'from-origin']),
 
-      autoCloseWhenOffScreen: {
-        type: Boolean,
-        default: true
-      },
-      canAutoPosition: {
-        type: Boolean,
-        default: true
-      },
-      onRequestClose: {
-        type: Function,
-        default: () => {}
-      },
-      open: {
-        type: Boolean,
-        default: false
-      },
-      style: [Object, Array],
+      autoCloseWhenOffScreen: true,
+      canAutoPosition: true,
+      onRequestClose: () => {},
+      open: false,
+      style: oneOfType([Object, Array]),
       targetOrigin: {
-        type: Object,
-        default () {
-          return {
-            vertical: 'top',
-            horizontal: 'left'
-          }
-        }
+        vertical: 'top',
+        horizontal: 'left'
       },
-      useLayerForClickAway: {
-        type: Boolean,
-        default: true
-      }
-    },
+      useLayerForClickAway: true
+    }),
     data () {
       return {
         position: {
@@ -118,20 +88,26 @@
       visible (newValue) {
         if (newValue) {
           this.position = this.getPosition()
-          this.transform = this.transformPair[0]
           this.transition = 'initial'
-          this.removeListener && this.removeListener()
-          setTimeout(() => {
-            this.removeListener = event.addListenerForClickAway(this.$els.popover, () => {
-              this.visible = false
-            }, true)
-          }, 0)
-          this.$nextTick(() => {
-            nextAnimationFrame(() => {
-              this.transform = this.transformPair[1]
-              this.transition = `all ${duration}ms linear`
+          if (this.animated) {
+            this.transform = this.transformPair[0]
+            this.removeListener && this.removeListener()
+            if (this.useLayerForClickAway) {
+//              setTimeout(() => {
+              this.removeListener = event.addListenerForClickAway(this.$els.popover, () => {
+                this.visible = false
+              }, true)
+//              }, 0)
+            }
+            this.$nextTick(() => {
+              nextAnimationFrame(() => {
+                this.transform = this.transformPair[1]
+                this.transition = `all ${duration}ms linear`
+              })
             })
-          })
+          } else {
+            this.transform = this.transformPair[1]
+          }
         } else {
           this.transform = this.transformPair[0]
         }
@@ -150,7 +126,7 @@
         if (this.visible && !this.anchorEl) {
           warn('当前anchorEl为', this.anchorEl, '无法显示Popover,请设置anchorEl属性')
         }
-        return this.visible && this.anchorEl
+        return this.useLayerForClickAway && this.visible && this.anchorEl
       },
       getPosition () {
         let position = {
