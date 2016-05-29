@@ -8,12 +8,13 @@
           tabindex="0"
           :disabled="disabled">
     <slot name="before"></slot>
-    <label v-style="styles.label">
+    <label v-style="styles.label" v-if="label">
       {{label}}
     </label>
     <slot name="after"></slot>
     <slot></slot>
     <m-ripple
+      :from-center="fromCenter"
       :ripple-color="rippleColor"
       :show-focus-ripple="showFocusRipple">
     </m-ripple>
@@ -27,6 +28,7 @@
   import mRipple from '../ripple/Ripple.vue'
   import themeManager from '../../styles/theme-manager'
   import styleUtil from '../../styles/util'
+  import { defaultProps, any, oneOf, oneOfType } from '../../util/prop'
 
   let muiTheme = themeManager.getTheme()
   let {buttonFilterColor} = muiTheme
@@ -44,14 +46,11 @@
      *
      * <m-flat-button label="Default"><img slot="before" /></m-flat-button>
      */
-    props: {
+    props: defaultProps({
       /**
        * 设为true禁用按钮
        */
-      disabled: {
-        type: Boolean,
-        default: false
-      },
+      disabled: false,
       /**
        * 按钮内的文本
        */
@@ -66,62 +65,43 @@
        */
       href: String,
 
-      onClick: {
-        type: Function,
-        default: () => {}
-      },
+      /**
+       * 波浪效果是否从中心点开始
+       */
+      fromCenter: false,
 
-      onBlur: {
-        type: Function,
-        default: () => {}
-      },
+      onClick: () => {},
+
+      onBlur: () => {},
       /**
        * 当元素通过键盘获取焦点时调用,此时按钮上会波浪效果
        */
-      onKeyboardFocus: {
-        type: Function,
-        default: () => {}
-      },
+      onKeyboardFocus: () => {},
       /**
        * 鼠标进入元素的时候调用
        */
-      onMouseEnter: {
-        type: Function,
-        default: () => {}
-      },
+      onMouseEnter: () => {},
       /**
        * 鼠标离开元素的时候调用
        */
-      onMouseLeave: {
-        type: Function,
-        default: () => {}
-      },
+      onMouseLeave: () => {},
       /**
        * 设为true,按钮的颜色和主题的primaryTextColor保持一致
        */
-      primary: {
-        type: Boolean,
-        default: false
-      },
+      primary: false,
       /**
        * 设为true,按钮的颜色和主题的secondaryTextColor保持一致 primary设为true的时候忽略secondary属性
        */
-      secondary: {
-        type: Boolean,
-        default: false
-      },
+      secondary: false,
       /**
        * 按钮点击后波浪的颜色
        */
-      rippleColor: {
-        type: String,
-        default: buttonFilterColor
-      },
+      rippleColor: buttonFilterColor,
       /**
        * 覆盖组件根元素的样式
        */
-      style: [Object, Array]
-    },
+      style: oneOfType([Object, Array])
+    }),
     data () {
       return {
         showFocusRipple: false
@@ -185,11 +165,11 @@
         this.showFocusRipple = false
         this.onClick($event)
       },
-      handleMouseEnter () {
-        this.onMouseEnter()
+      handleMouseEnter (event) {
+        this.onMouseEnter && this.onMouseEnter(event)
       },
-      handleMouseLeave () {
-        this.onMouseLeave()
+      handleMouseLeave (event) {
+        this.onMouseLeave && this.onMouseLeave(event)
       }
     },
     components: {

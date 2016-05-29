@@ -16,6 +16,10 @@ export default [
           {
             name: 'Floating Action Button',
             path: '/page/floating-action-button'
+          },
+          {
+            name: 'Icon Button',
+            path: '/page/icon-button'
           }
         ]
       },
@@ -37,11 +41,11 @@ export default [
         children: [
           {
             name: 'Toggle',
-            path: '/page/Toggle'
+            path: '/page/toggle'
           },
           {
             name: 'Radio Button',
-            path: '/page/Radio'
+            path: '/page/radio'
           }
         ]
       }
