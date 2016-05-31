@@ -13,6 +13,9 @@ script:
 - |
   git config --global user.name "zhanglingkang"
   git config --global user.email "lingkangzhangjava@163.com"
+  cd docs
+  npm install
+  cd ../
   npm run deploy-docs
   cd docs/temp
   git init
