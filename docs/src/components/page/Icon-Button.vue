@@ -74,7 +74,7 @@
     <m-button :icon-style="smallIcon"
               :style="small"
               tooltip-position="top-left">
-      <m-action-home-icon></m-action-home-icon>
+      <m-action-home-icon color="red"></m-action-home-icon>
       <div slot="tooltip">
         top-left
       </div>

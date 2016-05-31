@@ -21,7 +21,7 @@ script:
   git push --force  --quiet "https://${GITHUB_TOKEN}@${GITHUB_REF}" master:gh-pages
 branches:
   only:
-  - master
+  - develop
 notifications:
   email:
   - 18510416163@163.com

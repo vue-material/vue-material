@@ -48,6 +48,10 @@ export default [
             path: '/page/radio'
           }
         ]
+      },
+      {
+        name: 'Text Filed',
+        path: '/page/text-field'
       }
     ]
   }
