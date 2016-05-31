@@ -1,6 +1,6 @@
 {
   "name": "vue-material-docs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "deploy": "gh-pages -d temp",
     "dev": "node build/dev-server.js && webpack --config build/webpack.dev.conf.js --progress --colors --display-chunks --display-error-details --watch",
