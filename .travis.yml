@@ -13,8 +13,8 @@ script:
 - |
   git config --global user.name "zhanglingkang"
   git config --global user.email "lingkangzhangjava@163.com"
-  npm run build
-  cd temp
+  npm run deploy-docs
+  cd docs/temp
   git init
   git add .
   git commit -m "Update docs"
