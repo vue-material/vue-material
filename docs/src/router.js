@@ -2,7 +2,7 @@ import Vue from 'vue'
 import fn from 'vuejs-material/util/fn'
 import VueRouter from 'vue-router'
 import ComponentTemplate from './components/Component-Template.vue'
-import NotFound from './components/Not-found.vue'
+import NotFound from './components/Not-Found.vue'
 
 let {object, compose} = fn
 
